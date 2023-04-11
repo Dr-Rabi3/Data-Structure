@@ -42,29 +42,4 @@ public:
 };
 int main() {
   Stack<int>sk;
-  sk.Push(5);
-  sk.Push(4);
-  sk.Push(3);
-  sk.Push(2);
-  sk.Push(1);
-  cout << sk.Size() << '\n';
-  cout << sk.Top() << '\n';
-  cout << sk.Pop() << '\n';
-  sk.Pop();
-  cout << sk.Top() << '\n';
-  sk.Pop();
-  cout << sk.Top() << '\n';
-  sk.Pop();
-  sk.Pop();
-  sk.Pop();
-  cout << sk.isEmpty();
-  /*
-  5
-  1
-  1
-  3
-  4
-  Stack Already Empty.
-  1
-*/
 }
