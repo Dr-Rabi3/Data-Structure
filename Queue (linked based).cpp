@@ -50,7 +50,7 @@ public:
     int size() {
         return sz;
     }
-    int* Traverse() {
+    T* Traverse() {
         Node<T>* tamp = Front;
         T* arr = new T[sz];
         int x = 0;
