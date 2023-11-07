@@ -10,10 +10,15 @@ template < typename T > struct node {
   node(T d) : data(d), right(NULL), left(NULL) {}
   node(T d, node<T>* r, node<T>* l) : data(d), right(r), left(l) {}
 };
-
 template < typename T > class BST {
   node <T>* root;
   int sz;
+  void print(node<T>* temp, int par, char d) {
+    if (temp == NULL) return;
+    cout << par << " -> " << temp->data << ' ' << d << '\n';
+    print(temp->left, temp->data, 'L');
+    print(temp->right, temp->data, 'R');
+  }
 public:
   BST() : root(NULL), sz(0) {}
   void insert(T item) {
@@ -47,7 +52,6 @@ public:
     --sz;
     deleteNode(root, item);
   }
-
   node<T>* deleteNode(node<T>* curr, int item) {
     if (curr == NULL) return curr;
 
@@ -87,7 +91,6 @@ public:
       return curr;
     }
   }
-
   bool search(T item) {
     if (root == NULL) exit(1); // runtime error (Tree empty)
     node<T>* curr = root;
@@ -117,20 +120,8 @@ public:
     return curr->data;
   }
   void display() {
-    if (root == NULL) return;
-    queue<node<T>*>q;
-    q.push(root);
-    while (!q.empty()) {
-      int tamp = q.size();
-      while (tamp--) {
-        auto curr = q.front();
-        cout << curr->data << " ";
-        if (curr->left != NULL) q.push(curr->left);
-        if (curr->right != NULL) q.push(curr->right);
-        q.pop();
-      }
-      cout << endl;
-    }
+    cout << "P -> C D\n";
+    print(root, 0, 'M');
   }
   int depth(node<T>* tamp) {
     if (tamp == NULL) return 0;
@@ -158,9 +149,6 @@ public:
     }
     root = NULL;
     sz = 0;
-  }
-  bool isFull() {
-    return !isEmpty();
   }
 };
 
